@@ -1,0 +1,33 @@
+<script>
+
+/* function for the computer to return rock, paper or scissors randomly.*/
+
+function getComputerChoice() {
+    
+    return options[Math.floor(Math.random() * options.length)];
+
+}
+
+let options = ["Rock","Paper","Scissors"];
+
+let computerSelection = getComputerChoice(options);
+
+console.log(computerSelection)
+
+/* Function to get player choice*/
+
+function getPlayerChoice() {
+
+    return prompt("What's your choice?!","Rock, Paper or Scissors")
+
+}
+
+let playerSelection = getPlayerChoice()
+
+/*function for a single round of rock paper scissors*/
+
+
+
+
+
+</script>
