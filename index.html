@@ -8,11 +8,9 @@ function getComputerChoice() {
 
 }
 
-let options = ["Rock","Paper","Scissors"];
+let options = ["rock","paper","scissors"];
 
 let computerSelection = getComputerChoice(options);
-
-console.log(computerSelection)
 
 /* Function to get player choice*/
 
@@ -26,8 +24,29 @@ let playerSelection = getPlayerChoice()
 
 /*function for a single round of rock paper scissors*/
 
+function gameRound(computerSelection,playerSelection) {
 
+    playerSelection = playerSelection.toLowerCase; /*Makes string case insensitive*/
 
+    let result;
+
+    switch (true) {
+
+        case (playerSelection === computerSelection):
+            result = "It's a tie!"
+            break;
+        case (playerSelection === "rock" && computerSelection === "paper"):
+            result = "You lose!"
+            break;
+        case (playerSelection === "rock" && computerSelection === "scissors"):
+            result = "You win!"
+            break;
+    }
+
+    return result;
+}
+
+let gameRounds = gameRound(computerSelection,playerSelection);
 
 
 </script>
