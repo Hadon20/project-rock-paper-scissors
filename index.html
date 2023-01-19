@@ -24,29 +24,82 @@ let playerSelection = getPlayerChoice()
 
 /*function for a single round of rock paper scissors*/
 
+let result;
+
 function gameRound(computerSelection,playerSelection) {
 
-    playerSelection = playerSelection.toLowerCase; /*Makes string case insensitive*/
-
-    let result;
+    playerSelection = playerSelection.toLowerCase(); /*Makes string case insensitive*/
 
     switch (true) {
 
-        case (playerSelection === computerSelection):
+        case playerSelection === computerSelection:
             result = "It's a tie!"
             break;
-        case (playerSelection === "rock" && computerSelection === "paper"):
+        case playerSelection === "rock" && computerSelection === "paper":
             result = "You lose!"
             break;
-        case (playerSelection === "rock" && computerSelection === "scissors"):
+        case playerSelection === "rock" && computerSelection === "scissors":
             result = "You win!"
+            break;
+        case playerSelection === "paper" && computerSelection === "rock":
+            result = "You win!"
+            break;
+        case playerSelection === "paper" && computerSelection === "scissors":
+            result = "You lose!"
+            break;
+        case playerSelection === "scissors" && computerSelection === "paper":
+            result = "You win!"
+            break;
+        case playerSelection === "scissors" && computerSelection === "rock":
+            result = "You lose!"
             break;
     }
 
-    return result;
+   return result;
 }
 
-let gameRounds = gameRound(computerSelection,playerSelection);
+let gameRoundResult = gameRound(computerSelection,playerSelection);
 
+//function for multiple rounds game
+
+function game(gameRoundResult) {
+
+    let playerRounds = 0
+
+    let computerRounds = 0
+
+    for (let i = 0; i < 5; i++) { //Counter for number of rounds
+        
+        if (gameRoundResult === "You win!") {
+            
+            playerRounds++
+
+        } else if (gameRoundResult === "You lose!") {
+
+            computerRounds++
+            
+        } else {
+
+            playerRounds = playerRounds;
+        }
+
+    }
+
+    if (playerRounds > computerRounds) {
+
+        return "You won the game!"
+    
+    } else if (playerRounds < computerRounds) {
+
+        return "You lost the game!"
+
+    } else {
+        
+        return "You tied the game!"
+
+    }
+}
+
+let gameResult = game(gameRoundResult);
 
 </script>
