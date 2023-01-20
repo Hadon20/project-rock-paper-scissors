@@ -1,75 +1,70 @@
 <script>
 
-/* function for the computer to return rock, paper or scissors randomly.*/
+function game() { //function for a 5 round game of rock, paper, scissors
 
-function getComputerChoice() {
-    
-    return options[Math.floor(Math.random() * options.length)];
+    let options = ["rock","paper","scissors"];
 
-}
+    let result;
 
-let options = ["rock","paper","scissors"];
+    let playerRounds = 0;
 
-let computerSelection = getComputerChoice(options);
-
-/* Function to get player choice*/
-
-function getPlayerChoice() {
-
-    return prompt("What's your choice?!","Rock, Paper or Scissors")
-
-}
-
-let playerSelection = getPlayerChoice()
-
-/*function for a single round of rock paper scissors*/
-
-let result;
-
-function gameRound(computerSelection,playerSelection) {
-
-    playerSelection = playerSelection.toLowerCase(); /*Makes string case insensitive*/
-
-    switch (true) {
-
-        case playerSelection === computerSelection:
-            result = "It's a tie!"
-            break;
-        case playerSelection === "rock" && computerSelection === "paper":
-            result = "You lose!"
-            break;
-        case playerSelection === "rock" && computerSelection === "scissors":
-            result = "You win!"
-            break;
-        case playerSelection === "paper" && computerSelection === "rock":
-            result = "You win!"
-            break;
-        case playerSelection === "paper" && computerSelection === "scissors":
-            result = "You lose!"
-            break;
-        case playerSelection === "scissors" && computerSelection === "paper":
-            result = "You win!"
-            break;
-        case playerSelection === "scissors" && computerSelection === "rock":
-            result = "You lose!"
-            break;
-    }
-
-   return result;
-}
-
-let gameRoundResult = gameRound(computerSelection,playerSelection);
-
-//function for multiple rounds game
-
-function game(gameRoundResult) {
-
-    let playerRounds = 0
-
-    let computerRounds = 0
+    let computerRounds = 0;
 
     for (let i = 0; i < 5; i++) { //Counter for number of rounds
-        
+
+        function getComputerChoice() {  // Computer makes a random choice
+    
+            return options[Math.floor(Math.random() * options.length)];
+
+        }
+
+        let computerSelection = getComputerChoice(options);
+
+        function getPlayerChoice() {    // Player makes his choice
+
+            return prompt("What's your choice?!","Rock, Paper or Scissors")
+
+        }
+
+        let playerSelection = getPlayerChoice();
+
+        function gameRound(computerSelection,playerSelection) { // Plays a single round of the game
+
+            playerSelection = playerSelection.toLowerCase(); //Makes string case insensitive
+
+            switch (true) {
+
+                case playerSelection === computerSelection:
+                    result = "It's a tie!"
+                    break;
+                case playerSelection === "rock" && computerSelection === "paper":
+                    result = "You lose!"
+                    break;
+                case playerSelection === "rock" && computerSelection === "scissors":
+                    result = "You win!"
+                    break;
+                case playerSelection === "paper" && computerSelection === "rock":
+                    result = "You win!"
+                    break;
+                case playerSelection === "paper" && computerSelection === "scissors":
+                    result = "You lose!"
+                    break;
+                case playerSelection === "scissors" && computerSelection === "paper":
+                    result = "You win!"
+                    break;
+                case playerSelection === "scissors" && computerSelection === "rock":
+                    result = "You lose!"
+                    break;
+            }
+
+            return result;
+            
+        }
+
+        let gameRoundResult = gameRound(computerSelection,playerSelection);
+
+        // Score counter
+
         if (gameRoundResult === "You win!") {
             
             playerRounds++
@@ -84,6 +79,8 @@ function game(gameRoundResult) {
         }
 
     }
+
+    // Compares the player and computer score to determine the winner
 
     if (playerRounds > computerRounds) {
 
@@ -100,6 +97,8 @@ function game(gameRoundResult) {
     }
 }
 
-let gameResult = game(gameRoundResult);
+let gameResult = game();
+
+alert(gameResult);
 
 </script>
