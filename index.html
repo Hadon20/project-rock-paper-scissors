@@ -1,14 +1,14 @@
 <script>
 
+let playerRounds = 0;
+
+let computerRounds = 0;
+
 function game() { //function for a 5 round game of rock, paper, scissors
 
     let options = ["rock","paper","scissors"];
 
     let result;
-
-    let playerRounds = 0;
-
-    let computerRounds = 0;
 
     for (let i = 0; i < 5; i++) { //Counter for number of rounds
 
@@ -97,7 +97,7 @@ function game() { //function for a 5 round game of rock, paper, scissors
     }
 }
 
-let gameResult = game();
+let gameResult = game() + " " + playerRounds + "-" + computerRounds;
 
 alert(gameResult);
 
