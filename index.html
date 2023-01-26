@@ -1,104 +1,91 @@
 <script>
+  let playerRounds = 0;
 
-let playerRounds = 0;
+  let computerRounds = 0;
 
-let computerRounds = 0;
+  function game() {
+    //function for a 5 round game of rock, paper, scissors
 
-function game() { //function for a 5 round game of rock, paper, scissors
-
-    let options = ["rock","paper","scissors"];
+    const options = ["rock", "paper", "scissors"];
 
     let result;
 
-    for (let i = 0; i < 5; i++) { //Counter for number of rounds
+    for (let i = 0; i < 5; i++) {
+      //Counter for number of rounds
 
-        function getComputerChoice() {  // Computer makes a random choice
-    
-            return options[Math.floor(Math.random() * options.length)];
+      function getComputerChoice() {
+        // Computer makes a random choice
 
+        return options[Math.floor(Math.random() * options.length)];
+      }
+
+      let computerSelection = getComputerChoice(options);
+
+      function getPlayerChoice() {
+        // Player makes his choice
+
+        return prompt("What's your choice?!", "Rock, Paper or Scissors");
+      }
+
+      let playerSelection = getPlayerChoice();
+
+      function gameRound(computerSelection, playerSelection) {
+        // Plays a single round of the game
+
+        playerSelection = playerSelection.toLowerCase(); //Makes string case insensitive
+
+        switch (true) {
+          case playerSelection === computerSelection:
+            result = "It's a tie!";
+            break;
+          case playerSelection === "rock" && computerSelection === "paper":
+            result = "You lose!";
+            break;
+          case playerSelection === "rock" && computerSelection === "scissors":
+            result = "You win!";
+            break;
+          case playerSelection === "paper" && computerSelection === "rock":
+            result = "You win!";
+            break;
+          case playerSelection === "paper" && computerSelection === "scissors":
+            result = "You lose!";
+            break;
+          case playerSelection === "scissors" && computerSelection === "paper":
+            result = "You win!";
+            break;
+          case playerSelection === "scissors" && computerSelection === "rock":
+            result = "You lose!";
+            break;
         }
 
-        let computerSelection = getComputerChoice(options);
+        return result;
+      }
 
-        function getPlayerChoice() {    // Player makes his choice
+      let gameRoundResult = gameRound(computerSelection, playerSelection);
 
-            return prompt("What's your choice?!","Rock, Paper or Scissors")
+      // Score counter
 
-        }
-
-        let playerSelection = getPlayerChoice();
-
-        function gameRound(computerSelection,playerSelection) { // Plays a single round of the game
-
-            playerSelection = playerSelection.toLowerCase(); //Makes string case insensitive
-
-            switch (true) {
-
-                case playerSelection === computerSelection:
-                    result = "It's a tie!"
-                    break;
-                case playerSelection === "rock" && computerSelection === "paper":
-                    result = "You lose!"
-                    break;
-                case playerSelection === "rock" && computerSelection === "scissors":
-                    result = "You win!"
-                    break;
-                case playerSelection === "paper" && computerSelection === "rock":
-                    result = "You win!"
-                    break;
-                case playerSelection === "paper" && computerSelection === "scissors":
-                    result = "You lose!"
-                    break;
-                case playerSelection === "scissors" && computerSelection === "paper":
-                    result = "You win!"
-                    break;
-                case playerSelection === "scissors" && computerSelection === "rock":
-                    result = "You lose!"
-                    break;
-            }
-
-            return result;
-            
-        }
-
-        let gameRoundResult = gameRound(computerSelection,playerSelection);
-
-        // Score counter
-
-        if (gameRoundResult === "You win!") {
-            
-            playerRounds++
-
-        } else if (gameRoundResult === "You lose!") {
-
-            computerRounds++
-            
-        } else {
-
-            playerRounds = playerRounds;
-        }
-
+      if (gameRoundResult === "You win!") {
+        playerRounds++;
+      } else if (gameRoundResult === "You lose!") {
+        computerRounds++;
+      } else {
+        playerRounds = playerRounds;
+      }
     }
 
     // Compares the player and computer score to determine the winner
 
     if (playerRounds > computerRounds) {
-
-        return "You won the game!"
-    
+      return "You won the game!";
     } else if (playerRounds < computerRounds) {
-
-        return "You lost the game!"
-
+      return "You lost the game!";
     } else {
-        
-        return "You tied the game!"
-
+      return "You tied the game!";
     }
-}
+  }
 
-let gameResult = game() + " " + playerRounds + "-" + computerRounds;
+  let gameResult = game() + " " + playerRounds + "-" + computerRounds;
 
-alert(gameResult);
-
+  alert(gameResult);
 </script>
